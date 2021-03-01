@@ -22,9 +22,16 @@ namespace Bank
              Console.WriteLine("Saldo Insuficiente!");
              return false;  
         }
-        this.Saldo += valorSaque;
-        Console.WriteLine("Saldo atual da conta de {0} é {1}",this.Nome, this.Saldo);
+        else if (this.Saldo < valorSaque){
+        this.Credito += (this.Saldo + (valorSaque *-1));
+        this.Saldo = (this.Saldo - valorSaque);
+        Console.WriteLine("Saldo atual da conta de {0} é {1} e o valor de credito é {2}",this.Nome, this.Saldo,this.Credito);
         return true;
+        }
+        this.Saldo -= valorSaque;
+        Console.WriteLine("Saldo atual da conta de {0} é {1} e o valor de credito é {2}",this.Nome, this.Saldo,this.Credito);
+        return true;
+
     }
 
     public void Depositar (double valorDeposito){
